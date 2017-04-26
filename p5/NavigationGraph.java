@@ -53,8 +53,8 @@ public class NavigationGraph implements GraphADT<Location, Path> {
 	@Override
 	public List<Location> getVertices() {
 		ArrayList<Location> vertexList = new ArrayList<Location>();
-		for (GraphNode<Location, Path> vertex : vertices) {
-			vertexList.add(vertex.getVertexData());
+		for (GraphNode<Location, Path> v : vertices) {
+			vertexList.add(v.getVertexData());
 			return vertexList;
 		}
 		return null;
