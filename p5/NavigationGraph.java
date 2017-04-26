@@ -81,8 +81,7 @@ public class NavigationGraph implements GraphADT<Location, Path> {
 
 	@Override
 	public List<Path> getOutEdges(Location src) {
-		// TODO Auto-generated method stub
-		return null;
+		return getVertexByLocation(src).getOutEdges();
 	}
 
 	@Override
