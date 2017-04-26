@@ -39,6 +39,9 @@ public class NavigationGraph implements GraphADT<Location, Path> {
 
 	@Override
 	public void addVertex(Location vertex) {
+		if (getVertexByLocation(vertex) != null) {
+			throw new IllegalArgumentException();
+		}
 		vertices.add(new GraphNode<Location, Path>(vertex, numVertices));
 		numVertices++;
 
