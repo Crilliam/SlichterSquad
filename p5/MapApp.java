@@ -13,7 +13,7 @@ import java.util.Scanner;
  *
  */
 public class MapApp {
-//TODO TEST TEST TEST
+
 	private NavigationGraph graphObject;
 
 	/**
