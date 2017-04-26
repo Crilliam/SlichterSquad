@@ -13,7 +13,7 @@ import java.util.Scanner;
  *
  */
 public class MapApp {
-// Will sucks mega dick
+
 	private NavigationGraph graphObject;
 
 	/**
