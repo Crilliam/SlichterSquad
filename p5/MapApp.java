@@ -25,6 +25,7 @@ public class MapApp {
 	public MapApp(NavigationGraph graph) {
 		this.graphObject = graph;
 	}
+	//TODO: TELL WILL HE IS GAY
 
 	public static void main(String[] args) {
 		if (args.length != 1) {
