@@ -6,17 +6,21 @@ public class NavigationGraph implements GraphADT<Location, Path> {
 	// TODO: Implement all methods of GraphADT
 	private ArrayList<GraphNode<Location, Path>> vertices;
 	private int numVertices;
+	private ArrayList<String> edgePropertyNames;
 
 	public NavigationGraph(String[] edgePropertyNames) {
-		vertices = new ArrayList<GraphNode<Location, Path>>();
-		numVertices = 0;
+		this.vertices = new ArrayList<GraphNode<Location, Path>>();
+		this.numVertices = 0;
+		this.edgePropertyNames = new ArrayList<String>();
+		for (String s: edgePropertyNames) {
+			this.edgePropertyNames.add(s);
+		}
 	}
 
 	/**
 	 * Returns a Location object given its name
 	 * 
-	 * @param name
-	 *            of the location
+	 * @param name of the location
 	 * @return Location object
 	 */
 	public Location getLocationByName(String name) {
@@ -87,13 +91,13 @@ public class NavigationGraph implements GraphADT<Location, Path> {
 	@Override
 	public List<Location> getNeighbors(Location vertex) {
 		ArrayList<Location> neighborsList = new ArrayList<Location>();
-		GraphNode<Location, Path> WILL_IS_GAY = getVertexByLocation(vertex);
+		GraphNode<Location, Path> v = getVertexByLocation(vertex);
 		
-		if (WILL_IS_GAY == null) {
+		if (v == null) {
 			return null;
 		}
-		for (Path v: WILL_IS_GAY.getOutEdges()) {
-			neighborsList.add(v.getDestination());
+		for (Path p: v.getOutEdges()) {
+			neighborsList.add(p.getDestination());
 		}
 		return neighborsList;
 	}
@@ -106,8 +110,7 @@ public class NavigationGraph implements GraphADT<Location, Path> {
 
 	@Override
 	public String[] getEdgePropertyNames() {
-		// TODO Auto-generated method stub
-		return null;
+		return (String [])edgePropertyNames.toArray();
 	}
 
 }
