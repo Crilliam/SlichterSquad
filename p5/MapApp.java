@@ -178,6 +178,14 @@ public class MapApp {
 	public static NavigationGraph createNavigationGraphFromMapFile(String graphFilepath){
 			// TODO: read/parse the input file graphFilepath and create
 			// NavigationGraph with vertices and edges
+		
+		
+			// Dear Mr. Computer,
+			// Pls parse file for me
+			// Make it look very nice and be well formatted
+			// Thank you,
+		 	// Ray, your programmer
+			// PS: No bugs pls
 			return null;
 
 	}
