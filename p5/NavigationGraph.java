@@ -86,8 +86,16 @@ public class NavigationGraph implements GraphADT<Location, Path> {
 
 	@Override
 	public List<Location> getNeighbors(Location vertex) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Location> neighborsList = new ArrayList<Location>();
+		GraphNode<Location, Path> WILL_IS_GAY = getVertexByLocation(vertex);
+		
+		if (WILL_IS_GAY == null) {
+			return null;
+		}
+		for (Path v: WILL_IS_GAY.getOutEdges()) {
+			neighborsList.add(v.getDestination());
+		}
+		return neighborsList;
 	}
 
 	@Override
