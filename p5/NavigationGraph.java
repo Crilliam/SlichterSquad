@@ -5,7 +5,7 @@
 //
 // TEAM:    Team 3
 // Authors: Nate Hoffman	nhoffman5@wisc.edu	9074286361	LEC002
-// Author1: Ray Smith		rsmith52@wisc.edu				LEC
+// Author1: Ray Smith		rsmith52@wisc.edu	9073116221	LEC003
 // Author2: Will Mustari									LEC002
 //////////////////////////// 80 columns wide //////////////////////////////////
 import java.util.ArrayList;
@@ -196,6 +196,7 @@ public class NavigationGraph implements GraphADT<Location, Path> {
 //			   }// end bfs_function()
 //			}//end class dijkstra
 //		}
+		return null;
 	}
 
 	@Override
