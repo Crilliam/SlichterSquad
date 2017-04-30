@@ -175,18 +175,21 @@ public class MapApp {
 	 *             if any property value is not numeric 
 	 */
 
-	public static NavigationGraph createNavigationGraphFromMapFile(String graphFilepath){
+	public static NavigationGraph createNavigationGraphFromMapFile(String graphFilepath) throws FileNotFoundException, 
+																								InvalidFileException {
 			// TODO: read/parse the input file graphFilepath and create
 			// NavigationGraph with vertices and edges
 		
-		
-			// Dear Mr. Computer,
-			// Pls parse file for me
-			// Make it look very nice and be well formatted
-			// Thank you,
-		 	// Ray, your programmer
-			// PS: No bugs pls
-			return null;
+			File input = new File(graphFilepath);
+			Scanner fileReader = new Scanner(input);
+			String[] firstLine = fileReader.nextLine().split(" ");
+			String[] edgePropertyNames = new String[firstLine.length - 2];
+			for (int i = 2; i < firstLine.length; ++i) {
+				edgePropertyNames[i-2] = firstLine[i];
+			}
+			NavigationGraph graphObject = new NavigationGraph(edgePropertyNames);
+			fileReader.close();
+			return graphObject;
 
 	}
 
