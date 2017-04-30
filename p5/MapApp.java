@@ -177,17 +177,35 @@ public class MapApp {
 
 	public static NavigationGraph createNavigationGraphFromMapFile(String graphFilepath) throws FileNotFoundException, 
 																								InvalidFileException {
-			// TODO: read/parse the input file graphFilepath and create
-			// NavigationGraph with vertices and edges
-		
+			// Create scanner to read from file
 			File input = new File(graphFilepath);
 			Scanner fileReader = new Scanner(input);
+			// Get edge properties from first line
 			String[] firstLine = fileReader.nextLine().split(" ");
 			String[] edgePropertyNames = new String[firstLine.length - 2];
 			for (int i = 2; i < firstLine.length; ++i) {
 				edgePropertyNames[i-2] = firstLine[i];
 			}
+			// Create graph object
 			NavigationGraph graphObject = new NavigationGraph(edgePropertyNames);
+			// Add vertices and edges
+			while (fileReader.hasNextLine()) {
+				String source = fileReader.next();
+				String dest = fileReader.next();
+				String[] propertyValues = new String[edgePropertyNames.length];
+				for (int i = 0; i < propertyValues.length; i++) {
+					propertyValues[i] = fileReader.next();
+				}
+				if (graphObject.getLocationByName(source) == null) {
+					graphObject.addVertex(new Location(source));
+				}
+				if (graphObject.getLocationByName(dest) == null) {
+					graphObject.addVertex(new Location(dest));
+				}
+				
+			}
+			
+			
 			fileReader.close();
 			return graphObject;
 
