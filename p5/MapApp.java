@@ -202,7 +202,9 @@ public class MapApp {
 				if (graphObject.getLocationByName(dest) == null) {
 					graphObject.addVertex(new Location(dest));
 				}
-				
+				graphObject.addEdge(graphObject.getLocationByName(source),
+						graphObject.getLocationByName(dest),
+						)
 			}
 			
 			

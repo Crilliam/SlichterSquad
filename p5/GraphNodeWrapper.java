@@ -4,7 +4,7 @@ public class GraphNodeWrapper implements Comparable {
 	private GraphNode<Location, Path> node;
 	private double weight;
 	
-	public GraphNodeWrapper (GraphNode<Location, Path> graphNode, int pathValue) {
+	public GraphNodeWrapper (GraphNode<Location, Path> graphNode, double pathValue) {
 		setNode(graphNode);
 		setPathLength(pathValue);
 	}
@@ -21,7 +21,7 @@ public class GraphNodeWrapper implements Comparable {
 		return weight;
 	}
 
-	public void setPathLength(int pathLength) {
+	public void setPathLength(double pathLength) {
 		this.weight = pathLength;
 	}
 
