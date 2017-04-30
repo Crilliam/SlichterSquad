@@ -1,6 +1,19 @@
+/////////////////////////////////////////////////////////////////////////////
+// Semester:         CS367 Spring 2016 
+// PROJECT:          Program 5
+// FILE:             NavigatoinGraph.java
+//
+// TEAM:    Team 3
+// Authors: Nate Hoffman	nhoffman5@wisc.edu	9074286361	LEC002
+// Author1: Ray Smith		rsmith52@wisc.edu				LEC
+// Author2: Will Mustari									LEC002
+//////////////////////////// 80 columns wide //////////////////////////////////
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The NavigationGraph class is the graph 
+ */
 public class NavigationGraph implements GraphADT<Location, Path> {
 
 	// TODO: Implement all methods of GraphADT
