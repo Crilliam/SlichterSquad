@@ -1,3 +1,13 @@
+/////////////////////////////////////////////////////////////////////////////
+// Semester:         CS367 Spring 2016 
+// PROJECT:          Program 5
+// FILE:             NavigatoinGraph.java
+//
+// TEAM:    Team 3
+// Authors: Nate Hoffman	nhoffman5@wisc.edu	9074286361	LEC002
+// Author1: Ray Smith		rsmith52@wisc.edu	9073116221	LEC003
+// Author2: Will Mustari	mustari@wisc.edu	9075210683	LEC002
+//////////////////////////// 80 columns wide //////////////////////////////////
 
 public class GraphNodeWrapper implements Comparable {
 	
