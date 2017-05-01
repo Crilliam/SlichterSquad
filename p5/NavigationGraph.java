@@ -25,6 +25,11 @@ public class NavigationGraph implements GraphADT<Location, Path> {
 	private ArrayList<String> edgePropertyNames;
 	//stores all of the edge properties
 
+	/**
+	 * Creates the NavigationGraph object
+	 * 
+	 * @param edgePropertyNames stores all of the edge properties
+	 */
 	public NavigationGraph(String[] edgePropertyNames) {
 		this.vertices = new ArrayList<GraphNode<Location, Path>>();
 		this.numVertices = 0;

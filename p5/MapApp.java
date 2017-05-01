@@ -25,6 +25,7 @@ import java.util.Scanner;
 public class MapApp {
 
 	private NavigationGraph graphObject;
+	//creates the NavigationGraph to store locations and paths.
 
 	/**
 	 * Constructs a MapApp object
@@ -36,6 +37,14 @@ public class MapApp {
 		this.graphObject = graph;
 	}
 
+	/**
+	 * The main class creates the NavigationGraph using a file inputed through
+	 * args, and throws an exception if there is an invalid or no file.
+	 * 
+	 * @param args used to input the file
+	 * @exception FileNotFoundException if there is no file found
+	 * @exception InvalidFileException if the file is not formated correctly
+	 */
 	public static void main(String[] args) {
 		if (args.length != 1) {
 			System.out.println("Usage: java MapApp <pathToGraphFile>");
