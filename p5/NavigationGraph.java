@@ -10,6 +10,7 @@
 //////////////////////////// 80 columns wide //////////////////////////////////
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PriorityQueue;
 
 /**
  * The NavigationGraph class is the graph that stores the locations and routes.
@@ -61,6 +62,15 @@ public class NavigationGraph implements GraphADT<Location, Path> {
 			}
 		}
 		return null;
+	}
+	
+	private int getIndexOfProperty (String edgeProperty) {
+		for (int i = 0; i < edgePropertyNames.size(); ++i) {
+			if (edgePropertyNames.get(0).equals(edgeProperty)) {
+				return i;
+			}
+		}
+		return -1;
 	}
 
 	/**
@@ -138,6 +148,16 @@ public class NavigationGraph implements GraphADT<Location, Path> {
 	public List<Path> getOutEdges(Location src) {
 		return getVertexByLocation(src).getOutEdges();
 	}
+	
+	private Path getEdge(Location src, Location dest) {
+		List<Path> edges = getOutEdges(src);
+		for (Path edge: edges) {
+			if (edge.getDestination().equals(dest)) {
+				return edge;
+			}
+		}
+		return null;
+	}
 
 	/**
 	 * Gets the locations accessible from the given location.
@@ -170,7 +190,55 @@ public class NavigationGraph implements GraphADT<Location, Path> {
 	 */
 	@Override
 	public List<Path> getShortestRoute(Location src, Location dest, String edgePropertyName) {
-		
+		ArrayList<GraphNodeWrapper> list = new ArrayList<GraphNodeWrapper>();
+		// For each vertex set visited to false, weight to infinity, and predecessor to null
+		for (GraphNode<Location, Path> v: vertices) {
+			list.add(new GraphNodeWrapper(v));
+		}
+		GraphNodeWrapper start = null;
+		for (GraphNodeWrapper v : list) {
+			if (v.getNode().getVertexData().getName().equals(src.getName())) {
+				start =  v;
+			}
+		}
+		// Set start weight to 0
+		start.setPathLength(0);
+		// Create a new priority queue
+		PriorityQueue<GraphNodeWrapper> pq = new PriorityQueue<GraphNodeWrapper>();
+		// Insert start vertex
+		pq.add(start);
+		// Main Loop
+		while (!pq.isEmpty()) {
+			GraphNodeWrapper C = pq.remove();
+			C.setVisited(true);
+			// Get all unvisited successors
+			List<Location> neighbors = getNeighbors(C.getNode().getVertexData());
+			ArrayList<GraphNodeWrapper> successors = new ArrayList<GraphNodeWrapper>();
+			for (GraphNodeWrapper w: list) {
+				if (w.getVisited() == false) {
+					if (neighbors.contains(w.getNode().getVertexData())) {
+						successors.add(w);
+					}
+				}
+			}
+			for (GraphNodeWrapper s: successors) {
+				if (s.getPathLength() > 0) {
+					// Find edge weight from C to s
+					Path edge = getEdge(C.getNode().getVertexData(), s.getNode().getVertexData());
+					double weight = edge.getProperties().get(getIndexOfProperty(edgePropertyName));
+					// Update s's weight
+					s.setPathLength(C.getPathLength() + weight);
+					s.setPredecessor(C.getNode());
+					if (!pq.contains(s)) {
+						pq.add(s);
+					}
+					else {
+						pq.remove(s);
+						pq.add(s);
+					}
+				}
+			}
+		}
 		return null;
 	}
 
@@ -181,7 +249,11 @@ public class NavigationGraph implements GraphADT<Location, Path> {
 	 */
 	@Override
 	public String[] getEdgePropertyNames() {
-		return (String [])edgePropertyNames.toArray();
+		String[] edgeProperties = new String[edgePropertyNames.size()];
+		for (int i = 0; i < edgePropertyNames.size(); ++i) {
+			edgeProperties[i] = edgePropertyNames.get(i);
+		}
+		return edgeProperties;
 	}
 
 }
