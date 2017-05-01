@@ -192,9 +192,9 @@ public class MapApp {
 			while (fileReader.hasNextLine()) {
 				String source = fileReader.next();
 				String dest = fileReader.next();
-				String[] propertyValues = new String[edgePropertyNames.length];
-				for (int i = 0; i < propertyValues.length; i++) {
-					propertyValues[i] = fileReader.next();
+				ArrayList<Double> propertyValues = new ArrayList<Double>();
+				for (int i = 0; i < edgePropertyNames.length; i++) {
+					propertyValues.add(Double.parseDouble(fileReader.next()));
 				}
 				if (graphObject.getLocationByName(source) == null) {
 					graphObject.addVertex(new Location(source));
@@ -202,15 +202,13 @@ public class MapApp {
 				if (graphObject.getLocationByName(dest) == null) {
 					graphObject.addVertex(new Location(dest));
 				}
-				graphObject.addEdge(graphObject.getLocationByName(source),
-						graphObject.getLocationByName(dest),
-						)
+				Location sourceObject = graphObject.getLocationByName(source);
+				Location destObject = graphObject.getLocationByName(dest);
+				Path edge = new Path(sourceObject, destObject, propertyValues);
+				graphObject.addEdge(sourceObject, destObject, edge);
 			}
-			
-			
 			fileReader.close();
 			return graphObject;
-
 	}
 
 }
