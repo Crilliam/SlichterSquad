@@ -229,5 +229,4 @@ public class MapApp {
 			fileReader.close();
 			return graphObject;
 	}
-
 }

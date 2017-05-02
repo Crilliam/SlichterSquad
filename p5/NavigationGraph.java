@@ -268,5 +268,9 @@ public class NavigationGraph implements GraphADT<Location, Path> {
 		}
 		return edgeProperties;
 	}
-
+	
+	@Override
+	public String toString() {
+		return null; //TODO ADD THIS
+	}
 }
