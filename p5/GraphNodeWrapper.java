@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 /////////////////////////////////////////////////////////////////////////////
@@ -65,5 +66,4 @@ public class GraphNodeWrapper implements Comparable {
 	public void setPredecessor(GraphNode<Location, Path> predecessor) {
 		this.predecessor = predecessor;
 	}
-
 }
