@@ -91,7 +91,6 @@ public class NavigationGraph implements GraphADT<Location, Path> {
 		}
 		vertices.add(new GraphNode<Location, Path>(vertex, numVertices));
 		numVertices++;
-
 	}
 
 	/**
@@ -272,6 +271,15 @@ public class NavigationGraph implements GraphADT<Location, Path> {
 	
 	@Override
 	public String toString() {
-		return null; //TODO ADD THIS
+		String graph = "";
+		for (GraphNode<Location, Path> v: vertices) {
+			for (Path p: v.getOutEdges()) {
+				graph += p + " ";
+			}
+			graph = graph.substring(0, graph.length() - 1);
+			graph += ",\n";
+		}
+		graph = graph.substring(0, graph.length() - 2);
+		return graph;
 	}
 }
