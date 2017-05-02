@@ -209,8 +209,8 @@ public class MapApp {
 			NavigationGraph graphObject = new NavigationGraph(edgePropertyNames);
 			// Add vertices and edges
 			while (fileReader.hasNextLine()) {
-				String source = fileReader.next();
-				String dest = fileReader.next();
+				String source = fileReader.next().toLowerCase();
+				String dest = fileReader.next().toLowerCase();
 				ArrayList<Double> propertyValues = new ArrayList<Double>();
 				for (int i = 0; i < edgePropertyNames.length; i++) {
 					propertyValues.add(Double.parseDouble(fileReader.next()));
