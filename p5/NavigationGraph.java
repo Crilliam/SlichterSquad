@@ -46,6 +46,7 @@ public class NavigationGraph implements GraphADT<Location, Path> {
 	 * @return Location object
 	 */
 	public Location getLocationByName(String name) {
+		name = name.toLowerCase();
 		for (GraphNode<Location, Path> v : vertices) {
 			if (v.getVertexData().getName().equals(name)) {
 				return v.getVertexData();
