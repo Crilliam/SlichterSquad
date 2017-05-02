@@ -276,10 +276,8 @@ public class NavigationGraph implements GraphADT<Location, Path> {
 			for (Path p: v.getOutEdges()) {
 				graph += p + " ";
 			}
-			graph = graph.substring(0, graph.length() - 1);
-			graph += ",\n";
+			graph = graph.substring(0, graph.length() - 1) + ",\n";
 		}
-		graph = graph.substring(0, graph.length() - 2);
-		return graph;
+		return graph.substring(0, graph.length() - 2);
 	}
 }
