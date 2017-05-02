@@ -15,7 +15,7 @@ import java.util.List;
 public class GraphNodeWrapper implements Comparable {
 	
 	private GraphNode<Location, Path> node;
-	private GraphNode<Location, Path> predecessor;
+	private GraphNodeWrapper predecessor;
 	private boolean visited;
 	private double weight;
 	
@@ -42,15 +42,6 @@ public class GraphNodeWrapper implements Comparable {
 		this.weight = pathLength;
 	}
 
-	@Override
-	public int compareTo(Object o) {
-		return compareTo((GraphNodeWrapper)o);
-	}
-	
-	private int compareTo(GraphNodeWrapper o) {
-		return (-1 * (int)(weight - o.getPathLength()));
-	}
-
 	public boolean getVisited() {
 		return visited;
 	}
@@ -59,11 +50,20 @@ public class GraphNodeWrapper implements Comparable {
 		this.visited = visited;
 	}
 
-	public GraphNode<Location, Path> getPredecessor() {
+	public GraphNodeWrapper getPredecessor() {
 		return predecessor;
 	}
 
-	public void setPredecessor(GraphNode<Location, Path> predecessor) {
+	public void setPredecessor(GraphNodeWrapper predecessor) {
 		this.predecessor = predecessor;
+	}
+	
+	@Override
+	public int compareTo(Object o) {
+		return compareTo((GraphNodeWrapper)o);
+	}
+	
+	private int compareTo(GraphNodeWrapper o) {
+		return (int)(weight - o.getPathLength());
 	}
 }

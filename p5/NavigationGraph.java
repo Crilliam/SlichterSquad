@@ -237,19 +237,21 @@ public class NavigationGraph implements GraphADT<Location, Path> {
 				if (s.getPathLength() > C.getPathLength() + weight) {
 					// Update s's weight
 					s.setPathLength(C.getPathLength() + weight);
-					s.setPredecessor(C.getNode());
+					s.setPredecessor(C);
 					pq.add(s);
 				}
 			}
 		}
 		List<Path> paths = new ArrayList<Path>();
 		GraphNodeWrapper pointer = end;
-		do {
-			if (pointer.getPredecessor() != null) {
-				paths.add(0, getEdge(pointer.getPredecessor().getVertexData(), pointer.getNode().getVertexData()));
+		while (true) {
+			if (pointer.getPredecessor() == null) {
+				break;
 			}
+			paths.add(0, getEdgeIfExists(pointer.getPredecessor().getNode().getVertexData(),
+					pointer.getNode().getVertexData()));
+			pointer = pointer.getPredecessor();
 		}
-		while (pointer.getPredecessor() != getVertexByLocation(start.getNode().getVertexData()));
 		return paths;
 	}
 
