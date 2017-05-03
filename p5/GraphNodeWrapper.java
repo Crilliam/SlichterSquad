@@ -29,6 +29,12 @@ class GraphNodeWrapper implements Comparable {
 	// Current weight of the path from start to this node
 	private double weight;
 	
+	/**
+	 * Constructor for a GraphNodeWrapper. It sets visited to false, predecessor
+	 * to null, and pathLength to infinity as per Dijkstra's algortithm.
+	 * 
+	 * @param graphNode The graphNode this wrapper holds
+	 */
 	public GraphNodeWrapper (GraphNode<Location, Path> graphNode) {
 		setNode(graphNode);
 		setVisited(false);
@@ -36,43 +42,93 @@ class GraphNodeWrapper implements Comparable {
 		setPathLength(Double.POSITIVE_INFINITY);
 	}
 
+	/**
+	 * Getter for the node this wrapper object holds
+	 * 
+	 * @return This wrapper's held graphNode
+	 */
 	public GraphNode<Location, Path> getNode() {
 		return node;
 	}
 
+	/**
+	 * Setter for the node this wrapper object holds
+	 * 
+	 * @param node The node for this wrapper to hold
+	 */
 	public void setNode(GraphNode<Location, Path> node) {
 		this.node = node;
 	}
 
+	/**
+	 * Getter for the weight of the path up to this node
+	 * 
+	 * @return The weight of the path up to this node
+	 */
 	public double getPathLength() {
 		return weight;
 	}
 
+	/**
+	 * Setter for the weight of the path up to this node
+	 * 
+	 * @param pathLength The weight of the path up to this node
+	 */
 	public void setPathLength(double pathLength) {
 		this.weight = pathLength;
 	}
 
+	/**
+	 * Getter for whether this node has been visited or not
+	 * 
+	 * @return The weight of the path up to this node
+	 */
 	public boolean getVisited() {
 		return visited;
 	}
 
+	/**
+	 * Setter whether this node has been visited
+	 * 
+	 * @param visited Whether this node has been visited or not
+	 */
 	public void setVisited(boolean visited) {
 		this.visited = visited;
 	}
 
+	/**
+	 * Getter for the node in the path before this one
+	 * 
+	 * @return The node previous to this one in the shortest path
+	 */
 	public GraphNodeWrapper getPredecessor() {
 		return predecessor;
 	}
 
+	/**
+	 * Setter for the node previous to this one
+	 * 
+	 * @param predecessor The node previous to this one in the shortest path
+	 */
 	public void setPredecessor(GraphNodeWrapper predecessor) {
 		this.predecessor = predecessor;
 	}
 	
+	/**
+	 * Override compare method to compare just the weight of the path
+	 * up to the node.
+	 * 
+	 * @param o The other node to compare to
+	 */
 	@Override
 	public int compareTo(Object o) {
 		return compareTo((GraphNodeWrapper)o);
 	}
-	
+	/**
+	 * Helper method for the compareTo method
+	 * 
+	 * @param o The other node to compare to
+	 */
 	private int compareTo(GraphNodeWrapper o) {
 		return (int)(weight - o.getPathLength());
 	}
