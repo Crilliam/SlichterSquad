@@ -17,13 +17,13 @@ import java.util.PriorityQueue;
  * It also allows you to add things to it as well as get the information stored.
  */
 public class NavigationGraph implements GraphADT<Location, Path> {
-
-	private ArrayList<GraphNode<Location, Path>> vertices;
+	
 	//the ArrayList that stores the locations
-	private int numVertices;
+	private ArrayList<GraphNode<Location, Path>> vertices;
 	//stores the amount of vertices in the ArrayList
-	private ArrayList<String> edgePropertyNames;
+	private int numVertices;
 	//stores all of the edge properties
+	private ArrayList<String> edgePropertyNames;
 
 	/**
 	 * Creates the NavigationGraph object

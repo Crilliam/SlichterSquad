@@ -4,7 +4,7 @@ import java.util.List;
 /////////////////////////////////////////////////////////////////////////////
 // Semester:         CS367 Spring 2016 
 // PROJECT:          Program 5
-// FILE:             NavigatoinGraph.java
+// FILE:             GraphNodeWrapper.java
 //
 // TEAM:    Team 3
 // Author: Nate Hoffman	nhoffman5@wisc.edu	9074286361	LEC002
