@@ -12,13 +12,21 @@ import java.util.List;
 // Author: Will Mustari	mustari@wisc.edu	9075210683	LEC002
 //////////////////////////// 80 columns wide //////////////////////////////////
 
+/**
+ * The GraphNodeWrapper is a helper class for the GetShortestRoute method in
+ * NavigationGraph. It allows each node to have corresponding values such as
+ * if it has been visited, what it's predecessor in the path is, and what the
+ * weight of the path to the node is.
+ */
 class GraphNodeWrapper implements Comparable {
 	
 	// Reference to the GraphNode object this wrapper holds
 	private GraphNode<Location, Path> node;
-	// Reference to the previous GraphNodeWrapper
+	// Reference to the previous GraphNodeWrapper in the shortest path
 	private GraphNodeWrapper predecessor;
+	// If this node has been visited yet
 	private boolean visited;
+	// Current weight of the path from start to this node
 	private double weight;
 	
 	public GraphNodeWrapper (GraphNode<Location, Path> graphNode) {

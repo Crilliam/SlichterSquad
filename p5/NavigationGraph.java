@@ -224,10 +224,8 @@ public class NavigationGraph implements GraphADT<Location, Path> {
 			List<Location> neighbors = getNeighbors(C.getNode().getVertexData());
 			ArrayList<GraphNodeWrapper> successors = new ArrayList<GraphNodeWrapper>();
 			for (GraphNodeWrapper w: list) {
-				if (w.getVisited() == false) {
-					if (neighbors.contains(w.getNode().getVertexData())) {
-						successors.add(w);
-					}
+				if (w.getVisited() == false && neighbors.contains(w.getNode().getVertexData())) {
+					successors.add(w);
 				}
 			}
 			for (GraphNodeWrapper s: successors) {
