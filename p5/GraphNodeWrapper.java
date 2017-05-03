@@ -12,7 +12,7 @@ import java.util.List;
 // Author2: Will Mustari	mustari@wisc.edu	9075210683	LEC002
 //////////////////////////// 80 columns wide //////////////////////////////////
 
-public class GraphNodeWrapper implements Comparable {
+class GraphNodeWrapper implements Comparable {
 	
 	private GraphNode<Location, Path> node;
 	private GraphNodeWrapper predecessor;
