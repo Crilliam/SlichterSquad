@@ -14,7 +14,9 @@ import java.util.List;
 
 class GraphNodeWrapper implements Comparable {
 	
+	// Reference to the GraphNode object this wrapper holds
 	private GraphNode<Location, Path> node;
+	// Reference to the previous GraphNodeWrapper
 	private GraphNodeWrapper predecessor;
 	private boolean visited;
 	private double weight;
