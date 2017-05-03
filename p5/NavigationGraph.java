@@ -272,12 +272,19 @@ public class NavigationGraph implements GraphADT<Location, Path> {
 	@Override
 	public String toString() {
 		String graph = "";
+		int currSize = 1;
 		for (GraphNode<Location, Path> v: vertices) {
 			for (Path p: v.getOutEdges()) {
-				graph += p + " ";
+				if (currSize < v.getOutEdges().size()) {
+					graph += p + ", ";
+					currSize++;
+				}
+				else {
+					graph += p + "\n";
+					currSize = 1;
+				}
 			}
-			graph = graph.substring(0, graph.length() - 1) + ",\n";
 		}
-		return graph.substring(0, graph.length() - 2);
+		return graph.substring(0, graph.length() - 1);
 	}
 }
