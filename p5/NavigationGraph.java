@@ -267,10 +267,16 @@ public class NavigationGraph implements GraphADT<Location, Path> {
 		return edgeProperties;
 	}
 	
+	/**
+	 * Returns all of the edges in the graph as a string object
+	 * 
+	 * @return the entire graph as a string
+	 */
 	@Override
 	public String toString() {
 		String graph = "";
 		int currSize = 1;
+		//iterates through each edge and adds to the string
 		for (GraphNode<Location, Path> v: vertices) {
 			for (Path p: v.getOutEdges()) {
 				if (currSize < v.getOutEdges().size()) {
